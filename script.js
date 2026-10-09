@@ -22,22 +22,27 @@ function renderProjects() {
   if (!container) return;
 
   projects.forEach(function (item) {
-    const card = document.createElement("div");
-    card.className = "card";
+    const col = document.createElement("div");
+    col.className = "col-md-6 col-lg-4";
 
-    // Ubah array tech menjadi tag-tag HTML
     const techTags = item.tech
-      .map(function (t) { return `<span class="tag">${t}</span>`; })
+      .map(function (t) {
+        return `<span class="badge rounded-pill text-bg-info me-1">${t}</span>`;
+      })
       .join("");
 
-    card.innerHTML = `
-      <h3>${item.title}</h3>
-      <p>${item.description}</p>
-      <div class="skills">${techTags}</div>
-      <a href="${item.link}" class="btn">Lihat Detail</a>
+    col.innerHTML = `
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">${item.title}</h5>
+          <p class="card-text">${item.description}</p>
+          <div class="mb-3">${techTags}</div>
+          <a href="${item.link}" class="btn btn-info btn-sm">Lihat Detail</a>
+        </div>
+      </div>
     `;
 
-    container.appendChild(card);
+    container.appendChild(col);
   });
 }
 
@@ -116,17 +121,7 @@ function updateNavbar() {
 }
 
 // ===== MENU HAMBURGER =====
-function setupMenu() {
-  const toggle = document.getElementById("menu-toggle");
-  const menu = document.getElementById("menu");
-  if (!toggle || !menu) return;
-
-  toggle.addEventListener("click", function () {
-    menu.classList.toggle("open");
-  });
-}
 renderProjects();
 renderLearning();
 setupLogin();
 updateNavbar();
-setupMenu();
