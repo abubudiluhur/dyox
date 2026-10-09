@@ -119,9 +119,19 @@ function updateNavbar() {
     });
   }
 }
+// ===== MENU AKTIF OTOMATIS =====
+function setActiveMenu() {
+  // Ambil nama halaman dari URL, misalnya "learning"
+  let page = window.location.pathname.split("/").pop() || "index";
+  page = page.replace(".html", "");
 
-// ===== MENU HAMBURGER =====
+  document.querySelectorAll(".navbar .nav-link").forEach(function (link) {
+    const target = link.getAttribute("href").split("/").pop().replace(".html", "");
+    link.classList.toggle("active", target === page);
+  });
+}
 renderProjects();
 renderLearning();
 setupLogin();
+setActiveMenu();
 updateNavbar();
