@@ -139,46 +139,6 @@ footer {
   border-radius: 20px;
 }
 
-/* Login */
-.login-box {
-  max-width: 400px;
-  margin: 0 auto;
-  background: #1e293b;
-  padding: 30px;
-  border-radius: 10px;
-}
-
-.login-box label {
-  display: block;
-  margin: 12px 0 4px;
-}
-
-.login-box input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #334155;
-  background: #0f172a;
-  color: #e2e8f0;
-}
-
-.login-box input:focus {
-  outline: none;
-  border-color: #38bdf8;
-}
-
-.message {
-  color: #f87171;
-  margin: 10px 0;
-  min-height: 24px;
-}
-
-.login-box .btn {
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
-
 /* Tombol hamburger: disembunyikan di layar besar */
 .menu-toggle {
   display: none;

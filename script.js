@@ -77,48 +77,6 @@ function renderLearning() {
     container.appendChild(box);
   });
 }
-
-// ===== LOGIN =====
-// Data akun contoh (hanya untuk latihan)
-const akun = { username: "admin", password: "12345" };
-
-function setupLogin() {
-  const form = document.getElementById("login-form");
-  if (!form) return;
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault(); // cegah halaman reload
-
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value;
-    const message = document.getElementById("login-message");
-
-    if (username === akun.username && password === akun.password) {
-      localStorage.setItem("loggedInUser", username);
-      window.location.href = "index.html";
-    } else {
-      message.textContent = "Username atau password salah!";
-    }
-  });
-}
-
-// ===== NAVBAR: LOGIN / LOGOUT =====
-function updateNavbar() {
-  const loginLink = document.getElementById("login-link");
-  if (!loginLink) return;
-
-  const user = localStorage.getItem("loggedInUser");
-
-  if (user) {
-    loginLink.textContent = "Logout (" + user + ")";
-    loginLink.href = "#";
-    loginLink.addEventListener("click", function (e) {
-      e.preventDefault();
-      localStorage.removeItem("loggedInUser");
-      window.location.href = "login.html";
-    });
-  }
-}
 // ===== MENU AKTIF OTOMATIS =====
 function setActiveMenu() {
   // Ambil nama halaman dari URL, misalnya "learning"
@@ -132,6 +90,4 @@ function setActiveMenu() {
 }
 renderProjects();
 renderLearning();
-setupLogin();
 setActiveMenu();
-updateNavbar();
