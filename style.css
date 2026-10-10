@@ -202,3 +202,30 @@ footer {
     text-align: center;
   }
 }
+
+/* Accordion Learning */
+#learning-accordion {
+  max-width: 900px;
+  --bs-accordion-bg: #1e293b;
+  --bs-accordion-color: #e2e8f0;
+  --bs-accordion-border-color: #334155;
+  --bs-accordion-btn-color: #e2e8f0;
+  --bs-accordion-btn-bg: #1e293b;
+  --bs-accordion-active-bg: #0f172a;
+  --bs-accordion-active-color: #38bdf8;
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 0.2rem rgba(56, 189, 248, 0.25);
+}
+
+#learning-accordion .accordion-item {
+  margin-bottom: 12px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#learning-accordion .accordion-body h3 {
+  color: #38bdf8;
+}
+
+#learning-accordion .accordion-body a {
+  color: #7dd3fc;
+}
