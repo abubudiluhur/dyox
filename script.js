@@ -77,6 +77,7 @@ function renderLearning() {
     container.appendChild(box);
   });
 }
+
 // ===== MENU AKTIF OTOMATIS =====
 function setActiveMenu() {
   // Ambil nama halaman dari URL, misalnya "learning"
@@ -88,6 +89,67 @@ function setActiveMenu() {
     link.classList.toggle("active", target === page);
   });
 }
+
+// ===== EFEK MENGETIK DI HERO (hanya halaman Home) =====
+function initTyping() {
+  const typingEl = document.getElementById("typing");
+  if (!typingEl) return;
+
+  const words = ["Web Developer", "Android Developer", "Pelajar Sepanjang Hayat"];
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduceMotion) return;
+
+  let wordIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+
+  function tick() {
+    const word = words[wordIndex];
+    charIndex += deleting ? -1 : 1;
+    typingEl.textContent = word.slice(0, charIndex);
+
+    let delay = deleting ? 50 : 100;
+
+    if (!deleting && charIndex === word.length) {
+      deleting = true;
+      delay = 1400; // jeda setelah kata selesai diketik
+    } else if (deleting && charIndex === 0) {
+      deleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      delay = 400; // jeda sebelum kata berikutnya
+    }
+
+    setTimeout(tick, delay);
+  }
+
+  typingEl.textContent = "";
+  tick();
+}
+
+// ===== ANIMASI MUNCUL SAAT SCROLL =====
+function initReveal() {
+  const revealEls = document.querySelectorAll(".reveal");
+  if (revealEls.length === 0) return;
+
+  if (!("IntersectionObserver" in window)) {
+    revealEls.forEach(function (el) { el.classList.add("show"); });
+    return;
+  }
+
+  const observer = new IntersectionObserver(function (entries, obs) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        obs.unobserve(entry.target); // cukup sekali
+      }
+    });
+  }, { threshold: 0.15 });
+
+  revealEls.forEach(function (el) { observer.observe(el); });
+}
+
 renderProjects();
 renderLearning();
 setActiveMenu();
+initTyping();
+initReveal();

@@ -1,5 +1,5 @@
-* {
-  font-family: "Segoe UI", sans-serif;
+body {
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
 }
 
 body {
@@ -70,6 +70,55 @@ footer {
     height: 200px;
   }
 }
+
+html { scroll-behavior: smooth; }
+
+.home-section {
+  padding: 4rem 0;
+  color: #e2e8f0;
+}
+.section-alt { background: #1e293b; }
+
+.section-title {
+  color: #38bdf8;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.card-dark {
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: transform .2s, border-color .2s;
+}
+.card-dark:hover {
+  transform: translateY(-4px);
+  border-color: #38bdf8;
+}
+
+.skill-badge {
+  display: inline-block;
+  background: rgba(56, 189, 248, .15);
+  color: #38bdf8;
+  padding: .25rem .75rem;
+  border-radius: 999px;
+  font-size: .85rem;
+  margin: .25rem .25rem 0 0;
+}
+
+.stat-box {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 1rem;
+}
+.stat-box h3 { color: #38bdf8; margin: 0; }
+
+.timeline-item {
+  border-left: 3px solid #38bdf8;
+  padding-left: 1rem;
+}
+.text-muted-custom { color: #94a3b8; }
 
 /* Section umum */
 .section {
@@ -228,4 +277,51 @@ footer {
 
 #learning-accordion .accordion-body a {
   color: #7dd3fc;
+}
+
+/* Hero: gradient halus */
+.hero {
+  background:
+    radial-gradient(circle at 80% 30%, rgba(56, 189, 248, .15), transparent 50%),
+    #0f172a;
+}
+
+/* Efek mengetik */
+.typing-line {
+  min-height: 1.8rem;
+  margin: .75rem 0;
+  color: #38bdf8;
+  font-weight: 600;
+  font-size: 1.15rem;
+}
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  margin-left: 3px;
+  vertical-align: text-bottom;
+  background: #38bdf8;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+/* Animasi muncul saat scroll */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.js .reveal.show {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hormati pengaturan "kurangi animasi" */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .cursor { animation: none; }
 }
