@@ -1,67 +1,157 @@
+/* =========================================================
+   PALET GRADASI
+   Ubah 4 warna ini untuk mengganti tema seluruh website
+   ========================================================= */
+:root {
+  --g1: #38bdf8;   /* cyan */
+  --g2: #818cf8;   /* indigo */
+  --g3: #c084fc;   /* ungu */
+  --g4: #f472b6;   /* pink */
+  --gradient: linear-gradient(135deg, var(--g1), var(--g2), var(--g3));
+  --kaca: rgba(255, 255, 255, .05);
+  --garis: rgba(255, 255, 255, .1);
+}
+
+/* =========================================================
+   DASAR
+   ========================================================= */
+html { scroll-behavior: smooth; }
+
 body {
   font-family: 'Poppins', 'Segoe UI', sans-serif;
-}
-
-body {
-  background: #0f172a;
   color: #e2e8f0;
   line-height: 1.6;
+  background: linear-gradient(-45deg, #0f172a, #1e1b4b, #172554, #3b0764);
+  background-size: 400% 400%;
+  background-attachment: fixed;
+  animation: bgGeser 18s ease infinite;
 }
 
-/* Navbar */
-.custom-navbar {
-  background: #1e293b;
+@keyframes bgGeser {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
+
+/* Blob cahaya di belakang (opsional, butuh 2 div di HTML) */
+.blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: .35;
+  z-index: -1;
+  pointer-events: none;
+}
+.blob-1 {
+  width: 380px; height: 380px;
+  background: var(--g1);
+  top: -80px; left: -80px;
+  animation: blobGerak 14s ease-in-out infinite;
+}
+.blob-2 {
+  width: 420px; height: 420px;
+  background: var(--g3);
+  bottom: -100px; right: -100px;
+  animation: blobGerak 18s ease-in-out infinite reverse;
+}
+@keyframes blobGerak {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(60px, 40px) scale(1.15); }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #0f172a; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--g1), var(--g3));
+  border-radius: 10px;
+}
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+.custom-navbar {
+  background: rgba(15, 23, 42, .65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--garis);
+}
+
+.navbar { z-index: 100; }
 
 .navbar-brand.logo {
-  color: #38bdf8;
   font-weight: bold;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .nav-link.active,
 .nav-link:hover {
-  color: #38bdf8 !important;
+  color: var(--g1) !important;
 }
 
-/* Hero (Home) */
+/* =========================================================
+   HERO (HOME)
+   ========================================================= */
 .hero {
   min-height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 40px 0;
+  background:
+    radial-gradient(circle at 80% 30%, rgba(129, 140, 248, .25), transparent 50%),
+    radial-gradient(circle at 15% 80%, rgba(244, 114, 182, .15), transparent 45%);
 }
 
-.hero h1 { font-size: 3rem; color: #38bdf8; }
+.hero h1 {
+  font-size: 3rem;
+  background: linear-gradient(90deg, var(--g1), var(--g3), var(--g4), var(--g1));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: kilau 6s linear infinite;
+}
+
+@keyframes kilau {
+  to { background-position: 200% center; }
+}
+
 .hero .desc { margin: 12px 0 24px; max-width: 500px; }
 
-.btn {
+/* Badge jabatan di hero */
+.hero-badge {
   display: inline-block;
-  width: fit-content;
-  background: #38bdf8;
-  color: #0f172a;
-  padding: 10px 24px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
+  background: rgba(129, 140, 248, .15);
+  border: 1px solid rgba(129, 140, 248, .5);
+  color: #c7d2fe;
+  padding: .3rem .9rem;
+  border-radius: 999px;
+  font-size: .85rem;
+  margin-bottom: 1rem;
 }
 
-.btn:hover { background: #7dd3fc; }
-
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #1e293b;
-}
-
+/* Foto hero: cincin gradasi + melayang */
 .hero-photo {
   width: 380px;
   height: 380px;
   max-width: 100%;
-  object-fit: cover; 
+  object-fit: cover;
   border-radius: 50%;
-  border: 4px solid #38bdf8;
-  box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+  border: 4px solid transparent;
+  background:
+    linear-gradient(#0f172a, #0f172a) padding-box,
+    linear-gradient(135deg, var(--g1), var(--g3), var(--g4)) border-box;
+  box-shadow: 0 0 40px rgba(192, 132, 252, .35);
+  animation: melayang 4s ease-in-out infinite;
+}
+
+@keyframes melayang {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-14px); }
 }
 
 @media (max-width: 767px) {
@@ -71,36 +161,151 @@ footer {
   }
 }
 
-html { scroll-behavior: smooth; }
+/* Efek mengetik */
+.typing-line {
+  min-height: 1.8rem;
+  margin: .75rem 0;
+  color: var(--g1);
+  font-weight: 600;
+  font-size: 1.15rem;
+}
 
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  margin-left: 3px;
+  vertical-align: text-bottom;
+  background: var(--g3);
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+/* =========================================================
+   TOMBOL
+   ========================================================= */
+.btn {
+  display: inline-block;
+  width: fit-content;
+  padding: 10px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform .2s, box-shadow .2s, background .2s, color .2s;
+}
+
+.btn-info {
+  background: var(--gradient);
+  border: none;
+  color: #0f172a;
+}
+.btn-info:hover {
+  background: var(--gradient);
+  color: #0f172a;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(129, 140, 248, .45);
+}
+
+.btn-outline-info {
+  background: transparent;
+  border: 1px solid var(--g2);
+  color: var(--g1);
+}
+.btn-outline-info:hover {
+  background: var(--gradient);
+  border-color: transparent;
+  color: #0f172a;
+  transform: translateY(-3px);
+}
+
+.btn i,
+.hero-badge i,
+.org-periode i {
+  margin-right: .35rem;
+}
+
+/* Ikon sosial di hero */
+.social-links {
+  display: flex;
+  gap: 14px;
+  margin-top: 1.5rem;
+}
+
+.social-links a {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--garis);
+  border-radius: 50%;
+  color: var(--g1);
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: transform .2s, background .2s, color .2s;
+}
+
+.social-links a:hover {
+  background: var(--gradient);
+  color: #0f172a;
+  transform: translateY(-3px);
+}
+
+/* =========================================================
+   SECTION HOME
+   ========================================================= */
 .home-section {
   padding: 4rem 0;
   color: #e2e8f0;
+  background: transparent;
 }
-.section-alt { background: #1e293b; }
+
+.section-alt { background: rgba(255, 255, 255, .03); }
 
 .section-title {
-  color: #38bdf8;
   font-weight: 700;
   margin-bottom: 2rem;
+  display: inline-block;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
+/* Ikon tetap berwarna, tidak ikut transparan */
+.section-title i {
+  -webkit-text-fill-color: var(--g2);
+  margin-right: .4rem;
+}
+
+.card-dark h5 i,
+.org-heading i {
+  color: var(--g1);
+  margin-right: .4rem;
+}
+
+/* Kartu kaca */
 .card-dark {
-  background: #0f172a;
-  border: 1px solid #334155;
+  background: var(--kaca);
+  border: 1px solid var(--garis);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: 12px;
   padding: 1.5rem;
-  transition: transform .2s, border-color .2s;
+  transition: transform .2s, border-color .2s, box-shadow .2s;
 }
 .card-dark:hover {
   transform: translateY(-4px);
-  border-color: #38bdf8;
+  border-color: var(--g3);
+  box-shadow: 0 10px 30px rgba(192, 132, 252, .2);
 }
 
 .skill-badge {
   display: inline-block;
-  background: rgba(56, 189, 248, .15);
-  color: #38bdf8;
+  background: rgba(129, 140, 248, .15);
+  border: 1px solid rgba(129, 140, 248, .4);
+  color: #c7d2fe;
   padding: .25rem .75rem;
   border-radius: 999px;
   font-size: .85rem;
@@ -108,21 +313,34 @@ html { scroll-behavior: smooth; }
 }
 
 .stat-box {
-  background: #1e293b;
+  background: var(--kaca);
+  border: 1px solid var(--garis);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: 12px;
   padding: 1rem;
 }
-.stat-box h3 { color: #38bdf8; margin: 0; }
-
-.timeline-item {
-  border-left: 3px solid #38bdf8;
-  padding-left: 1rem;
+.stat-box h3 {
+  margin: 0;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+
 .text-muted-custom { color: #94a3b8; }
 
-/* Organisasi */
+/* =========================================================
+   ORGANISASI
+   ========================================================= */
+.timeline-item {
+  border-left: 3px solid transparent;
+  border-image: linear-gradient(180deg, var(--g1), var(--g3), var(--g4)) 1;
+  padding-left: 1rem;
+}
+
 .org-periode {
-  color: #38bdf8;
+  color: var(--g3);
   font-size: .95rem;
   margin-bottom: 1rem;
 }
@@ -151,13 +369,14 @@ html { scroll-behavior: smooth; }
   height: 160px;
   object-fit: cover;
   border-radius: 12px;
-  border: 1px solid #334155;
-  transition: transform .2s, border-color .2s;
+  border: 1px solid var(--garis);
+  transition: transform .2s, border-color .2s, box-shadow .2s;
 }
 
 .org-photo:hover {
   transform: translateY(-4px);
-  border-color: #38bdf8;
+  border-color: var(--g3);
+  box-shadow: 0 10px 30px rgba(192, 132, 252, .25);
 }
 
 .org-photo-main {
@@ -165,22 +384,26 @@ html { scroll-behavior: smooth; }
   height: 240px;
 }
 
-/* Section umum */
+/* =========================================================
+   HALAMAN LAIN (Project, Learning, Kontak)
+   ========================================================= */
 .section {
   padding: 40px 8%;
   min-height: 80vh;
 }
 
 .title {
-  color: #38bdf8;
   margin-bottom: 24px;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .subtitle {
   margin: 32px 0 12px;
 }
 
-/* Tag / label */
 .skills {
   display: flex;
   flex-wrap: wrap;
@@ -189,38 +412,12 @@ html { scroll-behavior: smooth; }
 }
 
 .tag {
-  background: #1e293b;
-  border: 1px solid #38bdf8;
-  color: #38bdf8;
+  background: rgba(129, 140, 248, .12);
+  border: 1px solid rgba(129, 140, 248, .5);
+  color: #c7d2fe;
   padding: 4px 12px;
   border-radius: 20px;
   font-size: 0.85rem;
-}
-
-/* Badge jabatan di hero */
-.hero-badge {
-  display: inline-block;
-  background: rgba(56, 189, 248, .15);
-  border: 1px solid #38bdf8;
-  color: #38bdf8;
-  padding: .3rem .9rem;
-  border-radius: 999px;
-  font-size: .85rem;
-  margin-bottom: 1rem;
-}
-
-/* Foto melayang */
-.hero-photo {
-  animation: melayang 4s ease-in-out infinite;
-}
-
-@keyframes melayang {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-14px); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-photo { animation: none; }
 }
 
 /* Project */
@@ -231,15 +428,22 @@ html { scroll-behavior: smooth; }
 }
 
 .card {
-  background: #1e293b;
+  background: var(--kaca);
+  border: 1px solid var(--garis);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   padding: 20px;
-  border-radius: 10px;
-  transition: transform 0.2s;
+  border-radius: 12px;
+  transition: transform .2s, border-color .2s, box-shadow .2s;
 }
 
-.card:hover { transform: translateY(-5px); }
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--g3);
+  box-shadow: 0 10px 30px rgba(192, 132, 252, .2);
+}
 
-.card h3 { color: #38bdf8; margin-bottom: 8px; }
+.card h3 { color: var(--g1); margin-bottom: 8px; }
 .card .btn { margin-top: 8px; }
 
 /* Learning */
@@ -251,9 +455,12 @@ html { scroll-behavior: smooth; }
 }
 
 .learning-item {
-  background: #1e293b;
+  background: var(--kaca);
+  border: 1px solid var(--garis);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   padding: 16px 20px;
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
 .learning-head {
@@ -263,7 +470,7 @@ html { scroll-behavior: smooth; }
 }
 
 .progress {
-  background: #0f172a;
+  background: rgba(15, 23, 42, .7);
   border-radius: 20px;
   height: 10px;
   overflow: hidden;
@@ -271,114 +478,51 @@ html { scroll-behavior: smooth; }
 }
 
 .progress-bar {
-  background: #38bdf8;
+  background: var(--gradient);
   height: 100%;
   border-radius: 20px;
-}
-
-/* Tombol hamburger: disembunyikan di layar besar */
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: #38bdf8;
-  font-size: 1.8rem;
-  cursor: pointer;
-}
-
-.navbar { z-index: 100; }
-
-/* Tampilan HP / layar kecil */
-@media (max-width: 700px) {
-  .navbar {
-    flex-wrap: wrap;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .navbar nav {
-    display: none;          /* menu tersembunyi dulu */
-    flex-direction: column;
-    width: 100%;
-    margin-top: 12px;
-  }
-
-  .navbar nav.open {
-    display: flex;          /* tampil saat tombol diklik */
-  }
-
-  .navbar nav a {
-    margin: 0;
-    padding: 10px 0;
-    border-bottom: 1px solid #334155;
-  }
-
-  .hero h1 { font-size: 2rem; }
-
-  .profile-card {
-    flex-direction: column;
-    text-align: center;
-  }
 }
 
 /* Accordion Learning */
 #learning-accordion {
   max-width: 900px;
-  --bs-accordion-bg: #1e293b;
+  --bs-accordion-bg: rgba(255, 255, 255, .05);
   --bs-accordion-color: #e2e8f0;
-  --bs-accordion-border-color: #334155;
+  --bs-accordion-border-color: rgba(255, 255, 255, .1);
   --bs-accordion-btn-color: #e2e8f0;
-  --bs-accordion-btn-bg: #1e293b;
-  --bs-accordion-active-bg: #0f172a;
-  --bs-accordion-active-color: #38bdf8;
-  --bs-accordion-btn-focus-box-shadow: 0 0 0 0.2rem rgba(56, 189, 248, 0.25);
+  --bs-accordion-btn-bg: rgba(255, 255, 255, .05);
+  --bs-accordion-active-bg: rgba(129, 140, 248, .15);
+  --bs-accordion-active-color: #c7d2fe;
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 0.2rem rgba(129, 140, 248, 0.25);
 }
 
 #learning-accordion .accordion-item {
   margin-bottom: 12px;
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
 }
 
 #learning-accordion .accordion-body h3 {
-  color: #38bdf8;
+  color: var(--g1);
 }
 
 #learning-accordion .accordion-body a {
-  color: #7dd3fc;
+  color: #a5b4fc;
 }
 
-/* Hero: gradient halus */
-.hero {
-  background:
-    radial-gradient(circle at 80% 30%, rgba(56, 189, 248, .15), transparent 50%),
-    #0f172a;
+/* =========================================================
+   FOOTER
+   ========================================================= */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(15, 23, 42, .7);
+  border-top: 1px solid var(--garis);
 }
 
-/* Efek mengetik */
-.typing-line {
-  min-height: 1.8rem;
-  margin: .75rem 0;
-  color: #38bdf8;
-  font-weight: 600;
-  font-size: 1.15rem;
-}
-
-.cursor {
-  display: inline-block;
-  width: 2px;
-  height: 1.1em;
-  margin-left: 3px;
-  vertical-align: text-bottom;
-  background: #38bdf8;
-  animation: blink 1s steps(1) infinite;
-}
-
-@keyframes blink { 50% { opacity: 0; } }
-
-/* Animasi muncul saat scroll */
+/* =========================================================
+   ANIMASI MUNCUL SAAT SCROLL
+   ========================================================= */
 .js .reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -390,50 +534,25 @@ html { scroll-behavior: smooth; }
   transform: none;
 }
 
+/* =========================================================
+   LAYAR KECIL
+   ========================================================= */
+@media (max-width: 700px) {
+  .hero h1 { font-size: 2rem; }
+
+  .profile-card {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
 /* Hormati pengaturan "kurangi animasi" */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .js .reveal { opacity: 1; transform: none; transition: none; }
+  body,
+  .hero h1,
+  .hero-photo,
+  .blob,
   .cursor { animation: none; }
-}
-
-/* Ikon */
-.section-title i,
-.card-dark h5 i,
-.org-heading i {
-  color: #38bdf8;
-  margin-right: .4rem;
-}
-
-.btn i,
-.hero-badge i,
-.org-periode i {
-  margin-right: .35rem;
-}
-
-/* Ikon sosial di hero */
-.social-links {
-  display: flex;
-  gap: 14px;
-  margin-top: 1.5rem;
-}
-
-.social-links a {
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #334155;
-  border-radius: 50%;
-  color: #38bdf8;
-  font-size: 1.2rem;
-  text-decoration: none;
-  transition: transform .2s, background .2s, color .2s;
-}
-
-.social-links a:hover {
-  background: #38bdf8;
-  color: #0f172a;
-  transform: translateY(-3px);
+  .js .reveal { opacity: 1; transform: none; transition: none; }
 }
