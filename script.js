@@ -95,7 +95,7 @@ function initTyping() {
   const typingEl = document.getElementById("typing");
   if (!typingEl) return;
 
-  const words = ["Web Developer", "Android Developer", "Pelajar Sepanjang Hayat"];
+  const words = ["Web Developer", "Android Developer", "Wakil Ketua BEM FTI"];
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (reduceMotion) return;
 

@@ -6,6 +6,7 @@
   <title>Portofolio Saya</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -36,11 +37,27 @@
 
           <!-- Teks (kiri) -->
           <div class="col-md-7">
-            <p>Halo, saya</p>
-            <h1>Abu Ahmad Al-Azkary</h1>
+            <p class="mb-1">Halo, saya</p>
+            <h1>ABU AHMAD AL-AZKARY</h1>
             <h3>Mahasiswa Fakultas Teknologi Informasi</h3>
-            <p class="desc">Saya tertarik pada pemrograman dan pengembangan aplikasi.</p>
-            <a href="#project-unggulan" class="btn btn-info btn-lg">Lihat Project</a>
+
+            <p class="desc">
+              Saya tertarik pada pemrograman dan pengembangan aplikasi,
+              terutama Android dan web. Saya juga aktif berorganisasi
+              dan mengelola kegiatan kemahasiswaan. Saya juga Aktif dalam kesenian.
+            </p>
+
+            <div class="d-flex flex-wrap gap-2">
+              <a href="#project-unggulan" class="btn btn-info btn-lg"><i class="bi bi-folder2-open"></i> Lihat Project</a>
+              <a href="kontak.html" class="btn btn-outline-info btn-lg"><i class="bi bi-send"></i> Hubungi Saya</a>
+            </div>
+
+            <div class="social-links">
+              <a href="https://github.com/abubudiluhur" target="_blank" aria-label="GitHub"><i class="bi bi-github"></i></a>
+              <a href="https://wa.me/6285959602525" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+              <a href="https://www.instagram.com/abubudiluhur" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="mailto:bauddyox@gmail.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+            </div>
           </div>
 
           <!-- Foto (kanan) -->
@@ -55,7 +72,7 @@
     <!-- TENTANG SAYA -->
     <section id="tentang" class="home-section">
       <div class="container">
-        <h2 class="section-title">Tentang Saya</h2>
+        <h2 class="section-title"><i class="bi bi-person-circle"></i> TENTANG SAYA</h2>
         <div class="row g-4 align-items-center">
           <div class="col-md-8">
             <p>
@@ -81,11 +98,11 @@
     <!-- SKILLS -->
     <section id="skills" class="home-section section-alt">
       <div class="container">
-        <h2 class="section-title">Skills</h2>
+        <h2 class="section-title"><i class="bi bi-tools"></i> SKILLS</h2>
         <div class="row g-4">
           <div class="col-md-4">
             <div class="card-dark h-100">
-              <h5>Web</h5>
+              <h5><i class="bi bi-globe2"></i> Web</h5>
               <span class="skill-badge">HTML</span>
               <span class="skill-badge">CSS</span>
               <span class="skill-badge">JavaScript</span>
@@ -94,14 +111,14 @@
           </div>
           <div class="col-md-4">
             <div class="card-dark h-100">
-              <h5>Mobile</h5>
+              <h5><i class="bi bi-phone"></i> Mobile</h5>
               <span class="skill-badge">Android</span>
               <span class="skill-badge">Java / Kotlin</span>
             </div>
           </div>
           <div class="col-md-4">
             <div class="card-dark h-100">
-              <h5>Tools</h5>
+              <h5><i class="bi bi-wrench-adjustable"></i> Tools</h5>
               <span class="skill-badge">Git & GitHub</span>
               <span class="skill-badge">VS Code</span>
             </div>
@@ -113,11 +130,44 @@
     <!-- ORGANISASI -->
     <section id="organisasi" class="home-section">
       <div class="container">
-        <h2 class="section-title">Organisasi</h2>
-        <div class="timeline-item">
-          <h5>BEM FTI</h5>
-          <small class="text-muted-custom">Badan Eksekutif Mahasiswa Fakultas Teknologi Informasi</small>
-          <p class="mt-2">Tulis peran dan kontribusi kamu di sini, misalnya divisi atau program kerja yang kamu pegang.</p>
+        <h2 class="section-title"><i class="bi bi-people-fill"></i> ORGANISASI</h2>
+
+        <div class="row g-4 align-items-start">
+          <div class="col-lg-7">
+            <div class="timeline-item">
+              <h5 class="mb-1">BEM FTI</h5>
+              <p class="text-muted-custom mb-1">Badan Eksekutif Mahasiswa Fakultas Teknologi Informasi</p>
+              <p class="mb-1 fw-semibold"><i class="bi bi-award-fill"></i> Wakil Ketua BEM FTI</p>
+              <p class="org-periode"><i class="bi bi-calendar-event"></i> Menjabat sebagai Wakil BEM FTI Periode 2026/2027</p>
+
+              <h6 class="org-heading"><i class="bi bi-list-task"></i> Tugas Pokok dan Fungsi</h6>
+              <ul class="org-list">
+                <li>Mendampingi Ketua BEM dalam memimpin dan mengarahkan jalannya organisasi.</li>
+                <li>Menggantikan Ketua BEM menjalankan tugas kepemimpinan apabila berhalangan.</li>
+                <li>Mengoordinasikan dan memantau kinerja divisi serta pelaksanaan program kerja.</li>
+                <li>Menjaga komunikasi dengan pihak fakultas, pihak eksternal, dan ORMAWA lain.</li>
+                <li>Membantu evaluasi program kerja dan menjaga kekompakan pengurus.</li>
+              </ul>
+
+              <h6 class="org-heading"><i class="bi bi-check2-circle"></i> Yang Sudah Dijalankan</h6>
+              <ul class="org-list">
+                <li>Ikut menyusun dan mematangkan program kerja BEM FTI periode 2026/2027.</li>
+                <li>Membantu penyusunan proposal kegiatan dan persiapan sidang proker.</li>
+                <li>Memantau persiapan kegiatan antar divisi.</li>
+                <li>Berkoordinasi dengan pihak fakultas terkait perizinan dan pendanaan kegiatan.</li>
+              </ul>
+            </div>
+          </div>
+
+          
+        <div class="col-lg-5">
+          <div class="org-gallery">
+            <img src="img/bem3.jpg" alt="Kegiatan BEM FTI 1" class="org-photo org-photo-main">
+            <img src="img/bem2.jpg" alt="Kegiatan BEM FTI 2" class="org-photo">
+            <img src="img/bem1.JPG" alt="Kegiatan BEM FTI 3" class="org-photo">
+          </div>
+        </div>
+
         </div>
       </div>
     </section>
@@ -125,7 +175,7 @@
     <!-- PROJECT UNGGULAN -->
     <section id="project-unggulan" class="home-section section-alt">
       <div class="container">
-        <h2 class="section-title">Project Unggulan</h2>
+        <h2 class="section-title"><i class="bi bi-rocket-takeoff"></i> PROJECT UNGGULAN</h2>
         <div class="row g-4">
           <div class="col-md-6">
             <div class="card-dark h-100">
@@ -156,7 +206,7 @@
     <!-- AJAKAN KONTAK -->
     <section class="home-section text-center">
       <div class="container">
-        <h2 class="section-title">Tertarik Bekerja Sama?</h2>
+        <h2 class="section-title"><i class="bi bi-chat-dots"></i> Tertarik Bekerja Sama?</h2>
         <p>Silakan hubungi saya.</p>
         <a href="kontak.html" class="btn btn-info">Hubungi Saya</a>
       </div>
@@ -165,7 +215,7 @@
   <footer>
     <p>&copy; 2026 Abu</p>
   </footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>

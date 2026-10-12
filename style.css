@@ -55,8 +55,8 @@ footer {
 }
 
 .hero-photo {
-  width: 280px;
-  height: 280px;
+  width: 380px;
+  height: 380px;
   max-width: 100%;
   object-fit: cover; 
   border-radius: 50%;
@@ -120,6 +120,51 @@ html { scroll-behavior: smooth; }
 }
 .text-muted-custom { color: #94a3b8; }
 
+/* Organisasi */
+.org-periode {
+  color: #38bdf8;
+  font-size: .95rem;
+  margin-bottom: 1rem;
+}
+
+.org-heading {
+  color: #e2e8f0;
+  font-weight: 600;
+  margin-top: 1.2rem;
+}
+
+.org-list {
+  color: #cbd5e1;
+  padding-left: 1.2rem;
+  line-height: 1.7;
+}
+
+/* Galeri organisasi */
+.org-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.org-photo {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid #334155;
+  transition: transform .2s, border-color .2s;
+}
+
+.org-photo:hover {
+  transform: translateY(-4px);
+  border-color: #38bdf8;
+}
+
+.org-photo-main {
+  grid-column: 1 / -1;   /* foto pertama melebar penuh */
+  height: 240px;
+}
+
 /* Section umum */
 .section {
   padding: 40px 8%;
@@ -150,6 +195,32 @@ html { scroll-behavior: smooth; }
   padding: 4px 12px;
   border-radius: 20px;
   font-size: 0.85rem;
+}
+
+/* Badge jabatan di hero */
+.hero-badge {
+  display: inline-block;
+  background: rgba(56, 189, 248, .15);
+  border: 1px solid #38bdf8;
+  color: #38bdf8;
+  padding: .3rem .9rem;
+  border-radius: 999px;
+  font-size: .85rem;
+  margin-bottom: 1rem;
+}
+
+/* Foto melayang */
+.hero-photo {
+  animation: melayang 4s ease-in-out infinite;
+}
+
+@keyframes melayang {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-14px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-photo { animation: none; }
 }
 
 /* Project */
@@ -324,4 +395,45 @@ html { scroll-behavior: smooth; }
   html { scroll-behavior: auto; }
   .js .reveal { opacity: 1; transform: none; transition: none; }
   .cursor { animation: none; }
+}
+
+/* Ikon */
+.section-title i,
+.card-dark h5 i,
+.org-heading i {
+  color: #38bdf8;
+  margin-right: .4rem;
+}
+
+.btn i,
+.hero-badge i,
+.org-periode i {
+  margin-right: .35rem;
+}
+
+/* Ikon sosial di hero */
+.social-links {
+  display: flex;
+  gap: 14px;
+  margin-top: 1.5rem;
+}
+
+.social-links a {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #334155;
+  border-radius: 50%;
+  color: #38bdf8;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: transform .2s, background .2s, color .2s;
+}
+
+.social-links a:hover {
+  background: #38bdf8;
+  color: #0f172a;
+  transform: translateY(-3px);
 }
