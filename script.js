@@ -14,7 +14,7 @@ const projects = [
   }
 ];
 
-// ===== MENAMPILKAN PROJECT =====
+// ===== MENAMPILKAN TOKO =====
 function renderProjects() {
   const container = document.getElementById("project-list");
 

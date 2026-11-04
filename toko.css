@@ -1,0 +1,384 @@
+/* =========================================================
+   TOKO SPAREPART VESPA KLASIK
+   Dimuat setelah style.css dan memakai token dari :root di sana
+   ========================================================= */
+
+/* Atribut hidden harus menang atas display bawaan tombol dan badge */
+.nav-cart [hidden],
+.toko-cart [hidden] { display: none !important; }
+
+.toko-header { padding-bottom: clamp(1.5rem, 4vw, 2.5rem); }
+.toko-header .section-title { margin-bottom: 1rem; }
+.toko-header .kontak-lead { margin-bottom: 0; }
+.toko-section { padding: 0 0 var(--space-section); }
+
+/* ---------- Ikon keranjang di navbar ---------- */
+.nav-cart {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  font-size: 1.05rem;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: border-color .25s var(--ease), color .25s var(--ease);
+}
+.nav-cart:hover { border-color: var(--accent); color: var(--accent); }
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 .35rem;
+  display: grid;
+  place-items: center;
+  font-size: .7rem;
+  font-weight: 800;
+  color: var(--accent-ink);
+  background: var(--accent);
+  border-radius: var(--r-pill);
+}
+
+/* ---------- Panel filter ---------- */
+.filter-panel {
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+}
+@media (min-width: 992px) {
+  .filter-panel { position: sticky; top: 96px; }
+}
+
+.filter-title {
+  margin: 1.4rem 0 .65rem;
+  font-size: .9rem;
+  font-weight: 700;
+  letter-spacing: -.005em;
+  color: var(--text);
+}
+.filter-title:first-child { margin-top: 0; }
+
+/* Kolom isian (pencarian, harga, urutan) */
+.search-box { position: relative; }
+.search-box i {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  pointer-events: none;
+}
+.search-box input,
+.harga-range input,
+.urut-box select {
+  width: 100%;
+  padding: .65rem 1rem;
+  font-family: var(--font-sans);
+  font-size: .92rem;
+  color: var(--text);
+  background-color: var(--bg);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-pill);
+  transition: border-color .25s var(--ease);
+}
+.search-box input { padding-left: 2.6rem; }
+.search-box input::placeholder,
+.harga-range input::placeholder { color: var(--muted); }
+.search-box input:focus,
+.harga-range input:focus,
+.urut-box select:focus { outline: none; border-color: var(--accent); box-shadow: none; }
+
+/* Kategori */
+.kat-list { display: grid; gap: .15rem; }
+.kat-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .5rem;
+  padding: .55rem .75rem;
+  font-family: var(--font-sans);
+  font-size: .92rem;
+  font-weight: 600;
+  text-align: left;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  transition: color .25s var(--ease), background .25s var(--ease), border-color .25s var(--ease);
+}
+.kat-btn:hover { color: var(--text); background: var(--surface-2); }
+.kat-btn.aktif {
+  color: var(--text);
+  background: var(--accent-soft);
+  border-color: rgba(240, 176, 74, .4);
+}
+.kat-jumlah { font-size: .8rem; color: var(--muted); }
+
+/* Harga */
+.harga-range {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: .5rem;
+  align-items: center;
+  color: var(--muted);
+}
+.harga-range input { padding-inline: .9rem; }
+
+/* Centang */
+.cek {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  margin-bottom: .5rem;
+  font-size: .92rem;
+  cursor: pointer;
+}
+.cek input { width: 1.05rem; height: 1.05rem; accent-color: var(--accent); }
+.cek-jumlah { margin-left: auto; font-size: .8rem; color: var(--muted); }
+
+/* ---------- Toolbar hasil ---------- */
+.toko-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem 1rem;
+  margin-bottom: 1.5rem;
+}
+.toko-hasil { margin: 0; font-size: .92rem; color: var(--muted); }
+.urut-box { display: flex; align-items: center; gap: .6rem; }
+.urut-box label { font-size: .88rem; color: var(--muted); white-space: nowrap; }
+.urut-box select { width: auto; min-width: 11rem; padding-block: .5rem; }
+
+/* ---------- Kartu produk ---------- */
+.produk-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  transition: transform .35s var(--ease), border-color .35s var(--ease);
+}
+.produk-card:hover { transform: translateY(-4px); border-color: var(--line-strong); }
+
+/* Foto: rasio 1:1, ditampilkan utuh (tidak dipotong) */
+.produk-foto {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #f1efe9;
+  border-bottom: 1px solid var(--line);
+}
+.produk-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: .75rem;
+  transition: transform .6s var(--ease), opacity .3s var(--ease);
+}
+.produk-card:hover .produk-foto img { transform: scale(1.04); }
+.is-habis .produk-foto img { opacity: .45; filter: grayscale(1); }
+
+.produk-label-wrap {
+  position: absolute;
+  top: .6rem;
+  left: .6rem;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .3rem;
+}
+.produk-label {
+  padding: .2rem .65rem;
+  font-size: .7rem;
+  font-weight: 800;
+  line-height: 1.35;
+  border-radius: var(--r-pill);
+}
+.label-best { background: var(--accent); color: var(--accent-ink); }
+.label-new  { background: var(--text);   color: var(--bg); }
+.label-sale { background: #c92a2d;       color: #fff; }
+
+.btn-fav {
+  position: absolute;
+  top: .6rem;
+  right: .6rem;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  color: var(--text);
+  background: rgba(14, 15, 18, .72);
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color .25s var(--ease), transform .25s var(--ease);
+}
+.btn-fav:hover { transform: scale(1.08); }
+.btn-fav.aktif { color: var(--accent); }
+
+.produk-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.15rem 1.25rem 1.3rem;
+}
+.produk-kategori { align-self: flex-start; margin: 0; font-size: .75rem; padding: .22rem .7rem; }
+.produk-body h5 {
+  margin: .7rem 0 .35rem;
+  font-size: 1.08rem;
+  letter-spacing: -.02em;
+}
+
+.produk-harga-wrap { display: flex; flex-wrap: wrap; align-items: baseline; gap: .1rem .5rem; }
+.produk-harga { font-size: 1.1rem; font-weight: 800; letter-spacing: -.02em; }
+.harga-coret { font-size: .85rem; color: var(--muted); }
+
+.produk-stok {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  margin: .4rem 0 1rem;
+  font-size: .82rem;
+  color: var(--muted);
+}
+.produk-stok::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.stok-ok::before { background: #4cc38a; }
+.stok-tipis { color: var(--accent); }
+.stok-habis::before { background: #e5484d; }
+
+.produk-tambah { margin-top: auto; width: 100%; justify-content: center; text-align: center; }
+.btn-info:disabled {
+  color: var(--muted);
+  background: var(--surface-2);
+  border-color: var(--line-strong);
+  opacity: 1;
+  cursor: not-allowed;
+}
+
+/* ---------- Kondisi kosong ---------- */
+.toko-kosong {
+  padding: 4rem 1.5rem;
+  text-align: center;
+  color: var(--muted);
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--r-lg);
+}
+.toko-kosong i { font-size: 2rem; color: var(--accent); }
+.toko-kosong h4 { margin: .75rem 0 .35rem; font-size: 1.2rem; color: var(--text); }
+.toko-kosong p { margin-bottom: 1.25rem; }
+
+/* ---------- Panel keranjang ---------- */
+.toko-cart {
+  --bs-offcanvas-width: 420px;
+  --bs-offcanvas-bg: var(--surface);
+  --bs-offcanvas-color: var(--text);
+  border-left: 1px solid var(--line-strong);
+}
+.toko-cart .offcanvas-header { border-bottom: 1px solid var(--line); }
+.toko-cart .offcanvas-title { margin: 0; font-size: 1.25rem; letter-spacing: -.02em; }
+
+.cart-items { overflow-y: auto; }
+.cart-kosong { padding: 3rem 0; text-align: center; color: var(--muted); }
+.cart-kosong i { font-size: 2rem; color: var(--accent); }
+.cart-kosong p { margin: .5rem 0 1.25rem; }
+
+.cart-item {
+  display: flex;
+  gap: .9rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.cart-item img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  padding: .25rem;
+  background: #f1efe9;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--line);
+}
+.cart-item-info { flex: 1; min-width: 0; }
+.cart-item-info h6 { margin: 0 0 .15rem; font-size: .98rem; letter-spacing: -.01em; }
+.cart-item-info small { display: block; color: var(--muted); }
+.cart-maks { margin-top: .35rem; color: var(--accent) !important; }
+
+.cart-item-kanan {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.cart-item-kanan strong { font-size: .95rem; letter-spacing: -.01em; }
+
+.qty { display: inline-flex; align-items: center; gap: .6rem; margin-top: .5rem; }
+.qty button {
+  width: 30px;
+  height: 30px;
+  line-height: 1;
+  font-family: var(--font-sans);
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: border-color .25s var(--ease), background .25s var(--ease);
+}
+.qty button:hover:not(:disabled) { border-color: var(--accent); background: var(--accent-soft); }
+.qty button:disabled { opacity: .35; cursor: not-allowed; }
+
+.btn-hapus {
+  padding: .25rem;
+  color: var(--muted);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  transition: color .25s var(--ease);
+}
+.btn-hapus:hover { color: var(--accent); }
+
+.cart-footer { padding-top: 1.25rem; border-top: 1px solid var(--line); }
+.cart-total { display: flex; justify-content: space-between; align-items: baseline; }
+.cart-total strong { font-size: 1.35rem; letter-spacing: -.03em; }
+.cart-catatan { margin: .25rem 0 1rem; font-size: .82rem; color: var(--muted); }
+
+.cart-footer .btn { justify-content: center; }
+.btn-info.disabled { opacity: .45; pointer-events: none; }
+#btn-kosongkan { color: var(--muted); font-weight: 600; font-size: .9rem; }
+#btn-kosongkan:hover { color: var(--text); }
+
+/* ---------- Notifikasi ---------- */
+.toko-toast {
+  color: var(--text);
+  background: var(--surface-2);
+  border: 1px solid var(--line-strong) !important;
+  border-radius: var(--r-md);
+}
+
+/* ---------- Responsif ---------- */
+@media (max-width: 575px) {
+  .filter-panel { padding: 1.15rem; }
+  .produk-body { padding: .9rem .9rem 1rem; }
+  .produk-body h5 { font-size: 1rem; }
+  .produk-tambah { font-size: .8rem; padding: .55rem .6rem; }
+  .urut-box { width: 100%; }
+  .urut-box select { flex: 1; }
+}
