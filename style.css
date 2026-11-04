@@ -1,3 +1,355 @@
+/*
+  RUANG RIMBA — CREATIVE BRUTALIST REDESIGN
+  Tempelkan isi file ini di BAGIAN PALING AKHIR stylesheet utama.
+  Override ini mempertahankan class, konten, routing, dan fungsi yang sudah ada.
+*/
+
+/* 1. Visual system */
+:root {
+  --bg: #101010;
+  --surface: #181818;
+  --surface-2: #202020;
+  --line: rgba(245, 242, 234, .22);
+  --line-strong: rgba(245, 242, 234, .48);
+  --text: #f5f2ea;
+  --muted: #aaa69d;
+  --accent: #ff5a1f;
+  --accent-ink: #101010;
+  --accent-soft: rgba(255, 90, 31, .14);
+
+  --r-sm: 0px;
+  --r-md: 2px;
+  --r-lg: 3px;
+  --r-pill: 2px;
+
+  --fs-hero: clamp(3.5rem, 11vw, 9.5rem);
+  --fs-h2: clamp(2.4rem, 6vw, 5rem);
+  --space-section: clamp(4.5rem, 10vw, 8rem);
+}
+
+body {
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  letter-spacing: -.015em;
+}
+
+body::after { opacity: .035; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 900;
+  letter-spacing: -.065em;
+  text-transform: uppercase;
+}
+
+.container { max-width: 1240px; }
+
+/* 2. Navigation — compact editorial bar */
+.custom-navbar {
+  background: rgba(16,16,16,.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line-strong);
+  padding: .65rem 0;
+}
+
+.navbar-brand.logo {
+  font-size: 1.05rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -.04em;
+}
+
+.custom-navbar .nav-link {
+  color: var(--muted);
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.custom-navbar .nav-link.active,
+.custom-navbar .nav-link:hover { color: var(--accent) !important; }
+
+.custom-navbar .nav-link.active::after {
+  height: 3px;
+  background: var(--accent);
+  border-radius: 0;
+}
+
+/* 3. Buttons — sharp and high contrast */
+.btn {
+  border-radius: 0;
+  padding: .9rem 1.35rem;
+  font-size: .82rem;
+  font-weight: 900;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+  border-width: 1px;
+}
+
+.btn-info {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  box-shadow: 4px 4px 0 var(--text);
+}
+
+.btn-info:hover,
+.btn-info:focus {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--bg);
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--accent);
+}
+
+.btn-outline-info {
+  border-color: var(--line-strong);
+  border-radius: 0;
+}
+
+.btn-outline-info:hover {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+
+/* 4. Hero — oversized type and graphic blocks */
+.hero {
+  padding-top: clamp(4rem, 9vw, 8rem);
+  padding-bottom: clamp(4rem, 9vw, 8rem);
+}
+
+.hero-intro {
+  color: var(--accent);
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-size: var(--fs-hero);
+  line-height: .82;
+  letter-spacing: -.085em;
+  font-weight: 900;
+  text-transform: uppercase;
+  max-width: 10ch;
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 span { display: block; }
+
+.hero-role {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.hero-tagline {
+  color: var(--accent);
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-weight: 900;
+  font-size: clamp(1.2rem, 2.4vw, 1.8rem);
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.hero .desc {
+  color: #c5c1b8;
+  max-width: 32rem;
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+}
+
+.hero-visual {
+  max-width: 460px;
+  padding: 12px;
+  background: var(--accent);
+  transform: rotate(2deg);
+}
+
+.hero-visual::before { display: none; }
+
+.hero-photo {
+  border: 0;
+  border-radius: 0;
+  box-shadow: 12px 12px 0 rgba(0,0,0,.5);
+  filter: grayscale(1) contrast(1.12);
+  aspect-ratio: 4 / 5;
+}
+
+.social-links a {
+  border-radius: 0;
+  border: 1px solid var(--line-strong);
+  color: var(--text);
+}
+
+.social-links a:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+
+/* 5. Sections — editorial dividers */
+.home-section {
+  border-top: 1px solid var(--line-strong);
+  position: relative;
+}
+
+.section-alt {
+  background: var(--surface);
+  border-top: 1px solid var(--accent);
+}
+
+.section-title {
+  font-size: var(--fs-h2);
+  line-height: .9;
+  letter-spacing: -.075em;
+  text-transform: uppercase;
+  max-width: 13ch;
+}
+
+.section-title::before {
+  content: "— ";
+  color: var(--accent);
+}
+
+.title {
+  font-size: var(--fs-h2);
+  line-height: .9;
+  text-transform: uppercase;
+}
+
+/* 6. About and stats */
+.about-text p:first-child {
+  font-size: clamp(1.25rem, 2.5vw, 1.8rem);
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+.stat-box {
+  border-bottom: 2px solid var(--line-strong);
+  padding-bottom: 1rem;
+}
+
+.stat-box h3 {
+  color: var(--accent);
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: .9;
+}
+
+/* 7. Skills — square labels */
+.skill-badge {
+  border-radius: 0;
+  border: 1px solid var(--line-strong);
+  background: transparent;
+  padding: .55rem .8rem;
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .035em;
+  text-transform: uppercase;
+}
+
+.skill-badge:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+  transform: translate(-2px, -2px);
+  box-shadow: 3px 3px 0 var(--text);
+}
+
+.skill-group {
+  border-top: 1px solid var(--line-strong);
+  padding: 1.5rem 0;
+}
+
+.skill-group h3 {
+  font-size: 1.15rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.skill-group h3 i { color: var(--accent); }
+
+/* 8. Organization timeline */
+.org-entry {
+  border-left: 2px solid var(--line-strong);
+  padding-left: 2rem;
+}
+
+.org-entry::before {
+  border-radius: 0;
+  width: 12px;
+  height: 12px;
+  left: -7px;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+}
+
+.org-entry:first-child::before {
+  background: var(--accent);
+  box-shadow: 0 0 0 5px var(--accent-soft);
+}
+
+.timeline-item h5 {
+  font-size: clamp(1.35rem, 2.5vw, 2rem);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.timeline-item .fw-semibold {
+  border-radius: 0;
+  background: var(--accent);
+  color: var(--bg);
+  padding: .35rem .65rem;
+  text-transform: uppercase;
+  font-size: .75rem;
+}
+
+.org-photo {
+  border-radius: 0;
+  filter: grayscale(1);
+  border: 1px solid var(--line-strong);
+}
+
+.org-photo:hover { filter: grayscale(0); }
+
+/* 9. Projects — strong frames, no soft cards */
+.project-grid,
+.project-showcase { gap: 1rem; }
+
+.card-dark,
+.card {
+  border-radius: 0;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  box-shadow: 5px 5px 0 rgba(255,255,255,.08);
+}
+
+.card-dark:hover,
+.card:hover {
+  border-color: var(--accent);
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0 var(--accent);
+}
+
+.section-alt .card-dark { background: var(--bg); }
+
+.project-thumb {
+  border-radius: 0;
+  border-bottom: 2px solid var(--line-strong);
+}
+
+.project-thumb img { filter: grayscale(.65) contrast(1.08); }
+.card-dark:hover .project-thumb img { filter: grayscale(0); }
+
+.project-card h5,
 .card-title {
   font-weight: 900;
   text-transform: uppercase;
